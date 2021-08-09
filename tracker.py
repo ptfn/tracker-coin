@@ -29,8 +29,11 @@ wallet = options[1]
 money = options[2]
 
 while True:
-    r = requests.get('https://api.bitfinex.com/v1/pubticker/'+ coin + wallet)
-    data = r.json()
-    price = data['ask']
-    print("{} %".format(pers(float(money), float(price))))
-    time.sleep(10)
+    try:
+        r = requests.get('https://api.bitfinex.com/v1/pubticker/'+ coin + wallet)
+        data = r.json()
+        price = data['ask']
+        print("{} %".format(pers(float(money), float(price))))
+        time.sleep(10)
+    except:
+        print('Error request!')
