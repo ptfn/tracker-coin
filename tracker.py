@@ -2,7 +2,6 @@ import sys
 import requests
 import time
 
-
 def file_opt(file):
     arr = file.readlines()
     res = []
@@ -14,12 +13,16 @@ def file_opt(file):
                 res.append(arr[i][k+1:])
     return res
 
-
 def pers(last, new):
     return round((new - last) / last * 100, 2)
 
+try:
+    argument = sys.argv[1]
+except:
+    print('Error argument!')
+    exit(0)
 
-file = open('option.txt', 'r')
+file = open(argument, 'r')
 options = file_opt(file)
 coin = options[0]
 wallet = options[1]
