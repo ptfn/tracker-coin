@@ -1,6 +1,6 @@
 import sys
-import requests
 import time
+import requests
 
 def file_opt(file):
     arr = file.readlines()

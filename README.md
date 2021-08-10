@@ -13,5 +13,6 @@ The argument is a file with options. You can make multiple files to track multip
 ## Running:
 
 ```
+$pip3 install -r requirements.txt
 $python3 tracker.py options.txt
 ```
