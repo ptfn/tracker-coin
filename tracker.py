@@ -27,13 +27,18 @@ options = file_opt(file)
 coin = options[0]
 wallet = options[1]
 money = options[2]
+limit = options[3]
 
 while True:
     try:
         r = requests.get('https://api.bitfinex.com/v1/pubticker/'+ coin + wallet)
         data = r.json()
         price = data['ask']
-        print("{} %".format(pers(float(money), float(price))))
-        time.sleep(10)
+        persent = pers(float(money), float(price))
+        print("{} %".format(persent))
+        if persent >= float(limit) :
+            print("LIMIT PRICE!")
     except:
         print('Error request!')
+    finally:
+        time.sleep(10)
