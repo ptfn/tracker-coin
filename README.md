@@ -9,6 +9,7 @@ The argument is a file with options. You can make multiple files to track multip
 * Coin -> coin selection(btc, eth, xmr and etc.)
 * Wallet -> currency selection(usd, eur, rus and etc.)
 * Money -> from which course are you tracking the coin(any number)
+* Limit -> percentage limit selection(20, 30, 40 and etc.)
 
 ## Running:
 
