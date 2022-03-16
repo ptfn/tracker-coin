@@ -2,32 +2,18 @@ import sys
 import time
 import requests
 
-def file_opt(file):
-    arr = file.readlines()
-    res = []
-    for i in range(len(arr)):
-        arr[i] = arr[i].replace("\n", "")
-    for i in range(len(arr)):
-        for k in range(len(arr[i])):
-            if arr[i][k] == ":":
-                res.append(arr[i][k+1:])
-    return res
-
 def pers(last, new):
     return round((new - last) / last * 100, 2)
 
 def main():
     try:
-        file = open("options.txt", "r")
+        coin = sys.argv[1]
+        wallet = sys.argv[2]
+        money = sys.argv[3]
+        limit = sys.argv[4]
     except:
         print("Error!")
         exit(0)
-
-    options = file_opt(file)
-    coin = options[0]
-    wallet = options[1]
-    money = options[2]
-    limit = options[3]
 
     while True:
         try:
@@ -35,9 +21,9 @@ def main():
             data = r.json()
             price = data["ask"]
             persent = pers(float(money), float(price))
-            print("{} %".format(persent))
+            print("{}\t{} %".format(price, persent))
             if persent >= float(limit) :
-                print("LIMIT PRICE!")
+                print("---LIMIT PRICE!---")
         except:
             print("Error request!")
         finally:
