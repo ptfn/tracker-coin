@@ -11,6 +11,7 @@ def main():
         wallet = sys.argv[2]
         money = sys.argv[3]
         limit = sys.argv[4]
+   
     except:
         print("Error!")
         exit(0)
@@ -21,11 +22,13 @@ def main():
             data = r.json()
             price = data["ask"]
             persent = pers(float(money), float(price))
-            print("{}\t{} %".format(price, persent))
+            print(f"{price}\t{persent} %")
             if persent >= float(limit) :
                 print("---LIMIT PRICE!---")
+        
         except:
             print("Error request!")
+        
         finally:
             time.sleep(10)
 
